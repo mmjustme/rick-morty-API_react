@@ -5,7 +5,7 @@ const initialState = {
   characters: [],
   character: [],
   characterEpisodes: [],
-  isLoading: true,
+  isLoading: false,
   next: null,
   prev: null,
   error: null,
@@ -66,10 +66,12 @@ const characterSlice = createSlice({
         state.prev = action.payload.info.prev;
         state.next = action.payload.info.next;
       })
-      .addCase(characterById.fulfilled, (state, action) => {
-        state.isLoading = true;
-        state.character = action.payload;
+      .addCase(characterById.fulfilled, (state, action) => {       
         state.isLoading = false;
+        state.character = action.payload;
+      })
+      .addCase(characterById.pending, (state) => {
+        state.isLoading = true;        
       })
 
       .addCase(characterEpisodes.fulfilled, (state, action) => {
