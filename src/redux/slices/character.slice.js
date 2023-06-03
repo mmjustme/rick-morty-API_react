@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {characterService} from "../../services/character.service";
+import {characterService} from "../../services";
 
 const initialState = {
     characters: [],
