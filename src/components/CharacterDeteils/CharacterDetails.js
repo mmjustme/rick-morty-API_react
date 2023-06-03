@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { characterActions } from "../../redux/slices/character.slice";
+import { characterActions } from "../../redux";
 import { CharacterEpisodes } from "../CharacterEpisodes/CharacterEpisodes";
 
 const CharacterDetails = () => {
