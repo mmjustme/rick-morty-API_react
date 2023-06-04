@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { episodeActions } from "../../redux/slices/episode.slice";
+import { episodeActions } from "../../redux";
 
 import { EpisodeCharacters } from "../EpisodeCharacters/EpisodeCharacters";
 
@@ -36,7 +36,6 @@ const EpisodeDetails = () => {
 
       <div className={"episodesCharacter"}>
         <h2>Characters in episode:</h2>
-
         {episode && <EpisodeCharacters arrayIds={idsArray} id={episodeId} />}
       </div>
     </div>

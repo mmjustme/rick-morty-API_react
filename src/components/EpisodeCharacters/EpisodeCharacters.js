@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { episodeActions } from "../../redux/slices/episode.slice";
+import { episodeActions } from "../../redux";
 import { Character } from "../Character/Character";
 
 const EpisodeCharacters = ({ arrayIds }) => {
@@ -17,7 +17,7 @@ const EpisodeCharacters = ({ arrayIds }) => {
   }, [episodeId]);
 
   if (!isLoading) {
-    return <h1>Loading...</h1>;
+    return <h1>Waite a sek..</h1>;
   }
 
   return (
