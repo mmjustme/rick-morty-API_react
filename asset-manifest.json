@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/dmkur/rick-morty-API_react.git/static/css/main.d5fbceb9.css",
+    "main.js": "/dmkur/rick-morty-API_react.git/static/js/main.0a9b1436.js",
+    "index.html": "/dmkur/rick-morty-API_react.git/index.html",
+    "main.d5fbceb9.css.map": "/dmkur/rick-morty-API_react.git/static/css/main.d5fbceb9.css.map",
+    "main.0a9b1436.js.map": "/dmkur/rick-morty-API_react.git/static/js/main.0a9b1436.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d5fbceb9.css",
+    "static/js/main.0a9b1436.js"
+  ]
+}
