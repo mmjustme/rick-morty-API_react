@@ -5,25 +5,23 @@ import { useParams } from "react-router-dom";
 import { episodeActions } from "../../redux";
 import { Character } from "../Character/Character";
 
-const EpisodeCharacters = ({ arrayIds }) => {
-  const { setEpisodeCharacters, isLoading } = useSelector(
+const EpisodeCharacters = () => {
+  const { setEpisodeCharacters, idsCharacters } = useSelector(
     (state) => state.episodeReducer
   );
   const { episodeId } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(episodeActions.episodeCharacters({ ids: arrayIds }));
+    dispatch(episodeActions.episodeCharacters({ ids: idsCharacters }));
   }, [episodeId]);
-
-  if (!isLoading) {
-    return <h1>Waite a sek..</h1>;
-  }
 
   return (
     <div className={"charactersWrapper"}>
       {setEpisodeCharacters &&
-        setEpisodeCharacters.map((c) => <Character character={c} key={c.id} />)}
+        setEpisodeCharacters.map((item) => (
+          <Character character={item} key={item.id} />
+        ))}
     </div>
   );
 };
