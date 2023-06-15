@@ -9,7 +9,9 @@ const initialState = {
   queryParams: null,
   prev: null,
   next: null,
-  isLoading: false
+  isLoading: false,
+  isLoadingEpisods: false,
+  idsCharacters: [],
 };
 
 const allEpisodes = createAsyncThunk(
@@ -60,7 +62,7 @@ const episodeSlice = createSlice({
     },
     setLoading: (state, action) => {
       state.isLoading = action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -70,10 +72,20 @@ const episodeSlice = createSlice({
         state.next = action.payload.info.next;
       })
       .addCase(episodeById.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.episode = action.payload;
+        for (const i in action.payload.characters) {
+          state.idsCharacters.push(i.split("/").pop());
+        }
+      })
+      .addCase(episodeById.pending, (state) => {
         state.isLoading = true;
       })
+      .addCase(episodeCharacters.pending, (state) => {
+        state.isLoadingEpisods = true;
+      })
       .addCase(episodeCharacters.fulfilled, (state, action) => {
+        state.isLoadingEpisods = false;
         state.setEpisodeCharacters = action.payload;
       })
       .addDefaultCase((state, action) => {
@@ -82,12 +94,12 @@ const episodeSlice = createSlice({
           ? (state.error = action.payload)
           : (state.error = null);
       });
-  }
+  },
 });
 
 const {
   reducer: episodeReducer,
-  actions: { setQuery, setLoading }
+  actions: { setQuery, setLoading },
 } = episodeSlice;
 
 const episodeActions = {
@@ -95,7 +107,7 @@ const episodeActions = {
   setQuery,
   episodeById,
   episodeCharacters,
-  setLoading
+  setLoading,
 };
 
 export { episodeActions, episodeReducer };
