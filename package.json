@@ -30,7 +30,6 @@
     "deploy": "gh-pages -d build"
 
   },
-  "homepage": "https://dmkur.github.io/rick-morty-API_react",
   "browserslist": [
     ">0.2%",
     "not dead",
